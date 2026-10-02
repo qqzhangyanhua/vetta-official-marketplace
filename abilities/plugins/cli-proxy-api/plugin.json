@@ -2,10 +2,12 @@
   "id": "cli-proxy-api",
   "name": "%name%",
   "icon": "assets/nav-icon.png",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "pluginApiVersion": "^2.4.0",
   "entry": "dist/mf-manifest.json",
-  "styles": ["dist/style.css"],
+  "styles": [
+    "dist/style.css"
+  ],
   "moduleFederation": {
     "remoteName": "cli_proxy_api",
     "expose": "./plugin"
@@ -21,20 +23,23 @@
     "network.fetch"
   ],
   "network": {
-    "allowedHosts": ["github.com", "release-assets.githubusercontent.com"]
+    "allowedHosts": [
+      "github.com",
+      "release-assets.githubusercontent.com"
+    ]
   },
   "providers": {
     "services": [
       {
         "id": "proxy",
         "runtime": {
-          "version": "7.2.147+gemini.1.0.5",
+          "version": "8.0.10+gemini.1.0.5",
           "platforms": {
             "win32-x64": {
               "executable": "core/cli-proxy-api.exe",
               "artifacts": [
                 {
-                  "sha256": "b2c46a0fb88cf06e7086e7b43f1e725922c72415a5657d4a4b3da322dc33a79d",
+                  "sha256": "d73c3b78faeb9d4c6e80890f0242146557a5032dfbb788474d06cdb64544b325",
                   "archive": "zip",
                   "destination": "core"
                 },
@@ -49,7 +54,7 @@
               "executable": "core/cli-proxy-api.exe",
               "artifacts": [
                 {
-                  "sha256": "5869021cfdd400d88e19ac3cb9f73485c596ab8c91c1871859e964aeef1e924c",
+                  "sha256": "fb8d120664f85dc91bfcea056d8995486e90f9b0d5d18ddcee6ad0053957f62c",
                   "archive": "zip",
                   "destination": "core"
                 },
@@ -64,7 +69,7 @@
               "executable": "core/cli-proxy-api",
               "artifacts": [
                 {
-                  "sha256": "85fd7332058f5ddedd0133d7e9063f02e80a1df60121ad515bab7aeb0e644af3",
+                  "sha256": "2d5af1cf19cc0d887b96fde809f78a999438a65564ce19de5966b7d5b6c451ca",
                   "archive": "tar.gz",
                   "destination": "core"
                 },
@@ -79,7 +84,7 @@
               "executable": "core/cli-proxy-api",
               "artifacts": [
                 {
-                  "sha256": "4ac1db83b00591265ebb93a3277d812aaf6e45e8b21bb3b4786598520afdf4be",
+                  "sha256": "e2080f54ee4d7940c77345440956ce592eef34da2910bd865d4928b75accd122",
                   "archive": "tar.gz",
                   "destination": "core"
                 },
@@ -94,7 +99,7 @@
               "executable": "core/cli-proxy-api",
               "artifacts": [
                 {
-                  "sha256": "01dce9e9418bf85e64597132ecb53e82248782ad782feeea725e5bacdfb2f64f",
+                  "sha256": "6211e059951e83acffedac098ad44a8bc60b47a53988c8d34d44397bfabbf578",
                   "archive": "tar.gz",
                   "destination": "core"
                 },
@@ -109,7 +114,7 @@
               "executable": "core/cli-proxy-api",
               "artifacts": [
                 {
-                  "sha256": "f3c59c38fc19f8e06042f29701ec9409dcc2b2235b5dc0a3ec142ba20b3a5a86",
+                  "sha256": "80aa0615d5d538c1988542ab99bc2d9a7b46360814c0f8c93db9e30127e249ff",
                   "archive": "tar.gz",
                   "destination": "core"
                 },
@@ -123,20 +128,35 @@
           }
         },
         "credentials": [
-          { "id": "api-key", "bytes": 32 },
-          { "id": "management-key", "bytes": 32 }
+          {
+            "id": "api-key",
+            "bytes": 32
+          },
+          {
+            "id": "management-key",
+            "bytes": 32
+          }
         ],
         "templates": [
-          { "source": "dist/assets/config.yaml.tpl", "destination": "config.yaml", "mode": "render" }
+          {
+            "source": "dist/assets/config.yaml.tpl",
+            "destination": "config.yaml",
+            "mode": "render"
+          }
         ],
         "process": {
-          "args": ["--config", "${VETTA_SERVICE_CACHE_DIR}/config.yaml"]
+          "args": [
+            "--config",
+            "${VETTA_SERVICE_CACHE_DIR}/config.yaml"
+          ]
         },
         "health": {
           "path": "/v1/models",
           "credentialId": "api-key",
           "timeoutMs": 60000,
-          "readiness": { "mode": "plugin" }
+          "readiness": {
+            "mode": "plugin"
+          }
         }
       }
     ]
